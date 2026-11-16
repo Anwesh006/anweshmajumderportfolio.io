@@ -952,6 +952,253 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 270px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.65rem;
+    }
+
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--highlight);
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .project-status {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-dim);
+    }
+
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .project-link:hover {
+      color: #ffffff;
+    }
+
+    /* Academics / Core Domains Grid */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .academic-card {
+      padding: 1.35rem 1.4rem;
+    }
+
+    .academic-icon {
+      font-size: 1.25rem;
+      color: var(--highlight);
+      margin-bottom: 0.75rem;
+    }
+
+    .academic-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .academic-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Interactive Developer Terminal */
+    .terminal-wrap {
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(10, 10, 15, 0.88);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      font-family: var(--font-mono);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.15rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ef4444; }
+    .terminal-dot.yellow { background: #eab308; }
+    .terminal-dot.green { background: #22c55e; }
+
+    .terminal-title {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-size: 0.82rem;
+      min-height: 200px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .terminal-log {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+
+    .terminal-log .highlight {
+      color: var(--highlight);
+    }
+
+    .terminal-log .success {
+      color: #34d399;
+    }
+
+    .terminal-prompt-line {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .terminal-prompt-label {
+      color: #34d399;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .terminal-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .terminal-quick-cmds {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.15rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--border);
+      font-size: 0.74rem;
+    }
+
+    .terminal-cmd-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 0.22rem 0.6rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      transition: all 0.2s ease;
+    }
+
+    .terminal-cmd-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* 3D Tilt Card Support (Gyroscope & Desktop Mouse) */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      perspective: 1000px;
+    }
+
     /* Footer */
     footer {
       margin-top: 4rem;
@@ -971,10 +1218,12 @@
       .hero,
       .about-layout,
       .journey-footer,
-      .contact-grid {
+      .contact-grid,
+      .projects-grid {
         grid-template-columns: 1fr;
       }
-      .skills-grid {
+      .skills-grid,
+      .academics-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -985,7 +1234,10 @@
       }
       .strengths-grid,
       .skills-grid,
-      .timeline {
+      .timeline,
+      .academics-grid {
+        grid-template-columns: 1fr;
+      }
         grid-template-columns: 1fr;
       }
       .timeline {
@@ -1053,14 +1305,16 @@
       <ul class="nav-links">
         <li><a href="#about" class="magnetic">About</a></li>
         <li><a href="#skills" class="magnetic">Skills</a></li>
-        <li><a href="#experience" class="magnetic">Experience</a></li>
-        <li><a href="#education" class="magnetic">Education</a></li>
+        <li><a href="#projects" class="magnetic">Projects</a></li>
+        <li><a href="#academics" class="magnetic">Academics</a></li>
+        <li><a href="#experience" class="magnetic">Journey</a></li>
+        <li><a href="#terminal" class="magnetic">Terminal</a></li>
         <li><a href="#contact" class="magnetic">Contact</a></li>
       </ul>
 
-      <div class="status-pill">
+      <div class="status-pill magnetic" id="gyroBadge" title="Device Gyroscope & 3D Tilt">
         <span class="status-dot"></span>
-        <span>Fresher</span>
+        <span id="gyroText">Fresher &bull; Gyro</span>
       </div>
     </nav>
   </div>
@@ -1097,7 +1351,7 @@
         </div>
       </div>
 
-      <aside class="spotlight-card hero-aside hero-anim">
+      <aside class="spotlight-card tilt-card hero-aside hero-anim">
         <div class="hero-meta-row">
           <span class="hero-meta-key">Degree</span>
           <span class="hero-meta-val">B.Sc. Computer Science</span>
@@ -1155,19 +1409,19 @@
         </p>
 
         <div class="strengths-grid">
-        <div class="spotlight-card strength-card reveal-item">
+        <div class="spotlight-card tilt-card strength-card reveal-item">
           <div class="strength-icon"><i class="fa-solid fa-bolt"></i></div>
           <h4>Quick Learner</h4>
           <p>Adapts rapidly to new programming languages, tools, and technical concepts.</p>
         </div>
 
-        <div class="spotlight-card strength-card reveal-item">
+        <div class="spotlight-card tilt-card strength-card reveal-item">
           <div class="strength-icon"><i class="fa-solid fa-shield-halved"></i></div>
           <h4>Honest &amp; Disciplined</h4>
           <p>Committed to consistent self-practice, integrity, and reliable execution.</p>
         </div>
 
-        <div class="spotlight-card strength-card reveal-item">
+        <div class="spotlight-card tilt-card strength-card reveal-item">
           <div class="strength-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
           <h4>Tech-Curious Mindset</h4>
           <p>Always exploring modern AI workflows, software craft, and web technologies.</p>
@@ -1184,7 +1438,7 @@
       </div>
 
       <div class="skills-grid">
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
             <div>
@@ -1195,7 +1449,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square skill-arrow"></i>
         </div>
 
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
             <div>
@@ -1206,7 +1460,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square skill-arrow"></i>
         </div>
 
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
             <div>
@@ -1217,7 +1471,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square skill-arrow"></i>
         </div>
 
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
             <div>
@@ -1228,7 +1482,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square skill-arrow"></i>
         </div>
 
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-solid fa-terminal"></i></div>
             <div>
@@ -1239,7 +1493,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square skill-arrow"></i>
         </div>
 
-        <div class="spotlight-card skill-card reveal-item">
+        <div class="spotlight-card tilt-card skill-card reveal-item">
           <div class="skill-left">
             <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
             <div>
@@ -1252,18 +1506,199 @@
       </div>
     </section>
 
+    <!-- Featured Projects Section -->
+    <section class="section reveal-section" id="projects">
+      <div class="section-head">
+        <h2 class="section-title">Featured Projects</h2>
+        <span class="section-index">03 / PROJECTS</span>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="spotlight-card tilt-card project-card reveal-item">
+          <div>
+            <div class="project-header">
+              <span class="project-num">PROJECT // 01</span>
+              <span class="project-status">Featured &bull; AI</span>
+            </div>
+            <h3 class="project-title">
+              <span>AI Knowledge Assistant &amp; Prompt Engine</span>
+            </h3>
+            <p class="project-desc">
+              A context-aware intelligent assistant exploring structured chain-of-thought prompting, role-specific personas, and dynamic context injection. Engineered with Python to test automated reasoning, prompt optimization, and modular LLM workflows.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Prompt Engineering</span>
+              <span class="project-tag">Modern AI Tools</span>
+              <span class="project-tag">Streamlit</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anwesh006" target="_blank" rel="noopener" class="project-link magnetic">
+              <i class="fa-brands fa-github"></i>
+              <span>View Source</span>
+            </a>
+            <a href="mailto:biltumajumder555@gmail.com?subject=Project Inquiry: AI Prompt Engine" class="project-link magnetic">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>Inquire</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="spotlight-card tilt-card project-card reveal-item">
+          <div>
+            <div class="project-header">
+              <span class="project-num">PROJECT // 02</span>
+              <span class="project-status">Algorithms &bull; C++</span>
+            </div>
+            <h3 class="project-title">
+              <span>Pathfinding Algorithm &amp; Maze Visualizer</span>
+            </h3>
+            <p class="project-desc">
+              Visual simulation and comparative analysis tool for graph traversal algorithms including Breadth-First Search (BFS), Depth-First Search (DFS), and Dijkstra’s shortest path algorithm on customizable obstacle grids.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">C++</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Graph Algorithms</span>
+              <span class="project-tag">Data Structures</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anwesh006" target="_blank" rel="noopener" class="project-link magnetic">
+              <i class="fa-brands fa-github"></i>
+              <span>View Source</span>
+            </a>
+            <a href="#skills" class="project-link magnetic">
+              <i class="fa-solid fa-code"></i>
+              <span>Tech Details</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="spotlight-card tilt-card project-card reveal-item">
+          <div>
+            <div class="project-header">
+              <span class="project-num">PROJECT // 03</span>
+              <span class="project-status">OOP &bull; Java</span>
+            </div>
+            <h3 class="project-title">
+              <span>Academic Record &amp; Grade Management Portal</span>
+            </h3>
+            <p class="project-desc">
+              Robust academic information management system applying object-oriented design principles (encapsulation, abstraction, inheritance). Features automated weighted GPA calculation, course enrollment tracking, and file I/O persistence.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">OOP Architecture</span>
+              <span class="project-tag">File I/O</span>
+              <span class="project-tag">Software Design</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anwesh006" target="_blank" rel="noopener" class="project-link magnetic">
+              <i class="fa-brands fa-github"></i>
+              <span>View Source</span>
+            </a>
+            <a href="#education" class="project-link magnetic">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Academic Context</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="spotlight-card tilt-card project-card reveal-item">
+          <div>
+            <div class="project-header">
+              <span class="project-num">PROJECT // 04</span>
+              <span class="project-status">Production &bull; WebGL</span>
+            </div>
+            <h3 class="project-title">
+              <span>Kinetic Developer Portfolio &amp; Gyro 3D</span>
+            </h3>
+            <p class="project-desc">
+              This portfolio website. Built with custom WebGL2 particle simulation, GSAP ScrollTrigger timeline choreography, mobile device gyroscope 3D tilt, and responsive glassmorphic UI architecture.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript (ES6+)</span>
+              <span class="project-tag">GSAP 3</span>
+              <span class="project-tag">WebGL2</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anwesh006/anweshmajumderportfolio.io" target="_blank" rel="noopener" class="project-link magnetic">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub Repo</span>
+            </a>
+            <a href="#top" class="project-link magnetic">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Back to Top</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Foundation Section -->
+    <section class="section reveal-section" id="academics">
+      <div class="section-head">
+        <h2 class="section-title">Academic Foundations</h2>
+        <span class="section-index">04 / ACADEMICS</span>
+      </div>
+
+      <div class="academics-grid">
+        <div class="spotlight-card tilt-card academic-card reveal-item">
+          <div class="academic-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <h4 class="academic-title">Data Structures &amp; Algorithms</h4>
+          <p class="academic-desc">
+            Core mastery of Arrays, Linked Lists, Stacks, Queues, Binary Search Trees, sorting algorithms, and asymptotic complexity (Big-O analysis).
+          </p>
+        </div>
+
+        <div class="spotlight-card tilt-card academic-card reveal-item">
+          <div class="academic-icon"><i class="fa-solid fa-cubes"></i></div>
+          <h4 class="academic-title">Object-Oriented Programming</h4>
+          <p class="academic-desc">
+            Solid implementation of Encapsulation, Polymorphism, Inheritance, and Abstraction in C++ and Java with clean modular code organization.
+          </p>
+        </div>
+
+        <div class="spotlight-card tilt-card academic-card reveal-item">
+          <div class="academic-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4 class="academic-title">System Architecture &amp; C</h4>
+          <p class="academic-desc">
+            Low-level computing foundations including pointers, memory allocation, CPU logic, and foundational computing principles in C.
+          </p>
+        </div>
+
+        <div class="spotlight-card tilt-card academic-card reveal-item">
+          <div class="academic-icon"><i class="fa-solid fa-globe"></i></div>
+          <h4 class="academic-title">Web &amp; UI Engineering</h4>
+          <p class="academic-desc">
+            Semantic HTML5, modern CSS3 layout engines (Grid &amp; Flexbox), responsive ergonomics, DOM APIs, and GPU-accelerated motion.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Experience & Education -->
     <section class="section reveal-section" id="experience">
       <div class="section-head">
         <h2 class="section-title">Experience &amp; Education</h2>
-        <span class="section-index">03 / JOURNEY</span>
+        <span class="section-index">05 / JOURNEY</span>
       </div>
 
       <div class="timeline" id="timelineContainer">
         <div class="timeline-line"><div class="timeline-line-fill" id="timelineFill"></div></div>
 
         <div class="timeline-node reveal-item">
-          <div class="spotlight-card">
+          <div class="spotlight-card tilt-card">
             <div class="card-top">
               <h3 class="card-title">Fresher</h3>
               <span class="card-badge">Present</span>
@@ -1276,7 +1711,7 @@
         </div>
 
         <div class="timeline-node reveal-item" id="education">
-          <div class="spotlight-card">
+          <div class="spotlight-card tilt-card">
             <div class="card-top">
               <h3 class="card-title">Bachelor of Science (B.Sc.) – Computer Science</h3>
               <span class="card-badge">Pursuing</span>
@@ -1308,15 +1743,60 @@
       </div>
     </section>
 
+    <!-- Interactive Developer Console Section -->
+    <section class="section reveal-section" id="terminal">
+      <div class="section-head">
+        <h2 class="section-title">Interactive Console</h2>
+        <span class="section-index">06 / TERMINAL</span>
+      </div>
+
+      <div class="terminal-wrap reveal-item">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <span class="terminal-title">anwesh@portfolio: ~ (bash / zsh)</span>
+          <span style="font-size: 0.68rem; color: #34d399;"><i class="fa-solid fa-circle" style="font-size: 6px; margin-right: 4px;"></i>ONLINE</span>
+        </div>
+
+        <div class="terminal-body" id="terminalLog">
+          <div class="terminal-log">
+            Welcome to Anwesh Majumder's interactive developer environment.<br>
+            Type <span class="highlight">help</span> or click the quick command chips below to explore projects, skills, education, or gyroscope status.
+          </div>
+        </div>
+
+        <div class="terminal-quick-cmds">
+          <span style="color: var(--text-dim); margin-right: 0.35rem;">Quick run:</span>
+          <button type="button" class="terminal-cmd-btn" data-cmd="skills">&gt; skills</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="projects">&gt; projects</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="about">&gt; about</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="academics">&gt; academics</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="gyro">&gt; gyro</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="contact">&gt; contact</button>
+          <button type="button" class="terminal-cmd-btn" data-cmd="clear">&gt; clear</button>
+        </div>
+
+        <div style="padding: 0.85rem 1.15rem; background: rgba(0,0,0,0.25); border-top: 1px solid var(--border);">
+          <div class="terminal-prompt-line">
+            <span class="terminal-prompt-label">anwesh@dev:~$</span>
+            <input type="text" class="terminal-input" id="terminalInput" placeholder="type 'help', 'projects', 'skills'..." autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section class="section reveal-section" id="contact">
       <div class="section-head">
         <h2 class="section-title">Connect</h2>
-        <span class="section-index">04 / CONTACT</span>
+        <span class="section-index">07 / CONTACT</span>
       </div>
 
       <div class="contact-grid">
-        <div class="spotlight-card contact-row reveal-item">
+        <div class="spotlight-card tilt-card contact-row reveal-item">
           <div class="contact-left">
             <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
             <span class="contact-label">Email</span>
@@ -1327,7 +1807,7 @@
           </div>
         </div>
 
-        <div class="spotlight-card contact-row reveal-item">
+        <div class="spotlight-card tilt-card contact-row reveal-item">
           <div class="contact-left">
             <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
             <span class="contact-label">Phone</span>
@@ -1338,7 +1818,7 @@
           </div>
         </div>
 
-        <div class="spotlight-card contact-row reveal-item">
+        <div class="spotlight-card tilt-card contact-row reveal-item">
           <div class="contact-left">
             <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
             <span class="contact-label">Location</span>
@@ -1681,7 +2161,45 @@
           });
         }
 
-        // 6. Timeline Line Draw & Node Activation
+        // 6. Featured Projects Reveal
+        const projectCards = document.querySelectorAll('.projects-grid .project-card');
+        if (projectCards.length) {
+          gsap.from(projectCards, {
+            scrollTrigger: {
+              trigger: '.projects-grid',
+              start: 'top 85%',
+              once: true
+            },
+            y: 38,
+            scale: 0.94,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 7. Academic Foundations Cards Reveal
+        const academicCards = document.querySelectorAll('.academics-grid .academic-card');
+        if (academicCards.length) {
+          gsap.from(academicCards, {
+            scrollTrigger: {
+              trigger: '.academics-grid',
+              start: 'top 85%',
+              once: true
+            },
+            y: 32,
+            scale: 0.95,
+            opacity: 0,
+            duration: 0.65,
+            stagger: 0.08,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 8. Timeline Line Draw & Node Activation
         const timelineFill = document.getElementById('timelineFill');
         if (timelineFill) {
           const isMobileTimeline = window.matchMedia('(max-width: 680px)').matches;
@@ -1713,7 +2231,7 @@
           });
         });
 
-        // 7. Languages Chips & Declaration Reveal
+        // 9. Languages Chips & Declaration Reveal
         const langChips = document.querySelectorAll('.lang-chip');
         if (langChips.length) {
           gsap.from(langChips, {
@@ -1747,7 +2265,24 @@
           });
         }
 
-        // 8. Contact Rows Staggered Reveal
+        // 10. Interactive Developer Terminal Reveal
+        const terminalWrap = document.querySelector('.terminal-wrap');
+        if (terminalWrap) {
+          gsap.from(terminalWrap, {
+            scrollTrigger: {
+              trigger: terminalWrap,
+              start: 'top 85%',
+              once: true
+            },
+            y: 35,
+            opacity: 0,
+            duration: 0.75,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 11. Contact Rows Staggered Reveal
         const contactRows = document.querySelectorAll('.contact-row');
         if (contactRows.length) {
           gsap.from(contactRows, {
@@ -1765,7 +2300,7 @@
           });
         }
 
-        // 9. Subtle Background Portrait Parallax on Scroll
+        // 12. Subtle Background Portrait Parallax on Scroll
         const bgPortrait = document.getElementById('bgPortrait');
         if (bgPortrait) {
           gsap.to(bgPortrait, {
@@ -1787,6 +2322,154 @@
         // Fallback if GSAP CDN is unavailable
         if (preloader) preloader.style.display = 'none';
       }
+
+      // 8. Gyroscope (Mobile DeviceOrientation + Desktop 3D Tilt Emulation)
+      let gyroActive = false;
+      let betaTarget = 0;
+      let gammaTarget = 0;
+      let currentBeta = 0;
+      let currentGamma = 0;
+
+      const gyroBadge = document.getElementById('gyroBadge');
+      const gyroText = document.getElementById('gyroText');
+
+      function updateGyroCards() {
+        if (!gyroActive) return;
+        currentBeta += (betaTarget - currentBeta) * 0.12;
+        currentGamma += (gammaTarget - currentGamma) * 0.12;
+
+        const tiltX = Math.min(Math.max(-currentBeta * 0.28, -12), 12);
+        const tiltY = Math.min(Math.max(currentGamma * 0.28, -12), 12);
+
+        document.querySelectorAll('.tilt-card').forEach(card => {
+          card.style.transform = `perspective(850px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+        });
+
+        // Background parallax shift on mobile tilt
+        const bgPortrait = document.getElementById('bgPortrait');
+        if (bgPortrait) {
+          bgPortrait.style.transform = `scale(1.08) translate3d(${(currentGamma * 0.5).toFixed(1)}px, ${(currentBeta * 0.5).toFixed(1)}px, 0)`;
+        }
+
+        requestAnimationFrame(updateGyroCards);
+      }
+
+      function onDeviceOrientation(e) {
+        if (e.beta === null && e.gamma === null) return;
+        if (!gyroActive) {
+          gyroActive = true;
+          if (gyroText) gyroText.textContent = 'Gyro 3D Live';
+          if (gyroBadge) {
+            gyroBadge.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+            gyroBadge.style.color = '#38bdf8';
+          }
+          requestAnimationFrame(updateGyroCards);
+        }
+
+        // Calibrate beta around 45deg natural phone angle
+        betaTarget = (e.beta || 0) - 45;
+        gammaTarget = e.gamma || 0;
+
+        // Drive WebGL DotField particles via simulated pointer move on phone tilt
+        const simX = window.innerWidth * (0.5 + Math.min(Math.max(gammaTarget / 50, -0.45), 0.45));
+        const simY = window.innerHeight * (0.5 + Math.min(Math.max(betaTarget / 50, -0.45), 0.45));
+        window.dispatchEvent(new PointerEvent('pointermove', {
+          clientX: simX,
+          clientY: simY,
+          bubbles: true
+        }));
+      }
+
+      // Gyroscope initialization & iOS permission request
+      if (window.DeviceOrientationEvent) {
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+          const requestGyroPermission = () => {
+            DeviceOrientationEvent.requestPermission()
+              .then(res => {
+                if (res === 'granted') {
+                  window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
+                }
+              })
+              .catch(() => {});
+            window.removeEventListener('click', requestGyroPermission);
+            window.removeEventListener('touchstart', requestGyroPermission);
+          };
+          window.addEventListener('click', requestGyroPermission, { once: true });
+          window.addEventListener('touchstart', requestGyroPermission, { once: true });
+        } else {
+          window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
+        }
+      }
+
+      // Desktop 3D Card Mouse Tilt (smooth interactive fallback)
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.tilt-card').forEach(card => {
+          card.addEventListener('mousemove', e => {
+            if (gyroActive) return; // Prioritize gyroscope if active
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const rx = -(y / (rect.height / 2)) * 6.5;
+            const ry = (x / (rect.width / 2)) * 6.5;
+            card.style.transform = `perspective(850px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-2px)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            if (gyroActive) return;
+            card.style.transform = '';
+          });
+        });
+      }
+
+      // 9. Interactive Developer Console Emulator
+      const termInput = document.getElementById('terminalInput');
+      const termLog = document.getElementById('terminalLog');
+      const cmdButtons = document.querySelectorAll('.terminal-cmd-btn');
+
+      const COMMANDS = {
+        help: 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">academics</span>, <span class="highlight">about</span>, <span class="highlight">experience</span>, <span class="highlight">contact</span>, <span class="highlight">gyro</span>, <span class="highlight">whoami</span>, <span class="highlight">clear</span>',
+        skills: 'Languages: Python, C++, Java, C, HTML/CSS, JS &bull; AI: Prompt Engineering &bull; Concepts: OOP, Data Structures',
+        projects: '1. AI Knowledge Assistant & Prompt Engine (Python)<br>2. Pathfinding Algorithm & Maze Visualizer (C++, BFS/DFS)<br>3. Academic Record & Grade Portal (Java, OOP)<br>4. Kinetic WebGL Developer Portfolio & Gyro (HTML/JS/GSAP)',
+        academics: 'B.Sc. in Computer Science @ Nabadwip Vidyasagar College &bull; Focus: Data Structures, Algorithms, OOP, Systems & Architecture',
+        about: 'Anwess Majumder &bull; B.Sc. Computer Science student from Krishnanagar, West Bengal. Exploring modern software systems, web engineering, and AI.',
+        experience: 'Fresher &bull; Building strong programming fundamentals through coursework, problem solving, and hands-on GitHub projects.',
+        contact: 'Email: biltumajumder555@gmail.com &bull; Phone: +91 9641051127 &bull; Location: Krishnanagar, West Bengal',
+        gyro: 'Gyroscope status: Active &bull; Tilt your phone to tilt cards and navigate particle physics in 3D.',
+        whoami: 'visitor@portfolio: Welcome! Feel free to explore my projects and connect.',
+        clear: 'CLEAR'
+      };
+
+      function runTerminalCommand(raw) {
+        if (!termLog) return;
+        const text = raw.trim().toLowerCase();
+        if (!text) return;
+
+        if (text === 'clear') {
+          termLog.innerHTML = '<div class="terminal-log">Console cleared. Type <span class="highlight">help</span> or click command buttons below.</div>';
+          if (termInput) termInput.value = '';
+          return;
+        }
+
+        const reply = COMMANDS[text] || `Command not found: "${text}". Type <span class="highlight">help</span> for a list of commands.`;
+        const item = document.createElement('div');
+        item.className = 'terminal-log';
+        item.innerHTML = `<span class="terminal-prompt-label">anwesh@dev:~$</span> ${text}<br>${reply}`;
+        termLog.appendChild(item);
+        termLog.scrollTop = termLog.scrollHeight;
+        if (termInput) termInput.value = '';
+      }
+
+      if (termInput) {
+        termInput.addEventListener('keydown', e => {
+          if (e.key === 'Enter') runTerminalCommand(termInput.value);
+        });
+      }
+
+      cmdButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const c = btn.getAttribute('data-cmd');
+          if (c) runTerminalCommand(c);
+        });
+      });
     })();
   </script>
 </body>
