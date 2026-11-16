@@ -211,13 +211,13 @@
       gap: 1.5rem;
       width: 100%;
       padding: 0.7rem 1.5rem;
-      background: rgba(15, 15, 19, 0.72);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)), rgba(12, 12, 18, 0.52);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 9999px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-      transition: border-color 0.3s ease, background 0.3s ease;
+      box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+      transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
     }
 
     nav:hover {
@@ -296,9 +296,9 @@
     }
 
     .nav-wrapper nav.scrolled {
-      background: rgba(10, 10, 15, 0.92);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)), rgba(9, 9, 14, 0.78);
       border-color: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 18px 50px -10px rgba(0, 0, 0, 0.75), 0 0 25px rgba(56, 189, 248, 0.12);
     }
 
     /* Floating Scroll to Top Button */
@@ -564,17 +564,18 @@
       color: var(--text-dim);
     }
 
-    /* Spotlight Hover Card System */
+    /* Spotlight & Blurry Vanish Glassmorphic Card System */
     .spotlight-card {
       position: relative;
-      background: var(--surface);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem 1.5rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(12, 12, 18, 0.42);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.45rem 1.55rem;
       overflow: hidden;
-      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, filter 0.4s ease;
     }
 
     .spotlight-card::before {
@@ -582,22 +583,22 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(
-        420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.075),
-        transparent 45%
+        460px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.1),
+        rgba(56, 189, 248, 0.05) 30%,
+        transparent 65%
       );
       opacity: 0;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.4s ease;
       pointer-events: none;
-    }
-
-    .spotlight-card:hover::before {
-      opacity: 1;
+      z-index: 0;
     }
 
     .spotlight-card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(18, 18, 28, 0.58);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.65), 0 0 35px -5px rgba(56, 189, 248, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
     }
 
     /* About & Strengths — Full-Width Two-Column Split */
@@ -1081,13 +1082,21 @@
 
     /* Interactive Developer Terminal */
     .terminal-wrap {
-      border: 1px solid var(--border-strong);
-      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
       overflow: hidden;
-      background: rgba(10, 10, 15, 0.88);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(10, 10, 16, 0.48);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
       font-family: var(--font-mono);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    .terminal-wrap:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(14, 14, 22, 0.58);
+      box-shadow: 0 28px 70px -10px rgba(0, 0, 0, 0.75), 0 0 35px -5px rgba(56, 189, 248, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
     }
 
     .terminal-header {
@@ -2027,10 +2036,11 @@
         .from('.hero-anim', {
           y: 22,
           opacity: 0,
-          duration: 0.65,
+          filter: 'blur(12px)',
+          duration: 0.75,
           stagger: 0.1,
           ease: 'power3.out',
-          clearProps: 'transform,opacity'
+          clearProps: 'transform,opacity,filter'
         }, '-=0.45');
 
         // 1. Hero Depth Parallax on Scroll
@@ -2073,7 +2083,7 @@
           });
         }
 
-        // 3. Section Headers Reveal on Scroll
+        // 3. Section Headers Reveal on Scroll (Blurry Vanish In)
         document.querySelectorAll('.section-head').forEach(head => {
           const title = head.querySelector('.section-title');
           const idx = head.querySelector('.section-index');
@@ -2086,9 +2096,10 @@
               },
               y: 28,
               opacity: 0,
-              duration: 0.7,
+              filter: 'blur(10px)',
+              duration: 0.75,
               ease: 'power3.out',
-              clearProps: 'transform,opacity'
+              clearProps: 'transform,opacity,filter'
             });
           }
           if (idx) {
@@ -2100,14 +2111,15 @@
               },
               x: 20,
               opacity: 0,
-              duration: 0.65,
+              filter: 'blur(8px)',
+              duration: 0.7,
               ease: 'power3.out',
-              clearProps: 'transform,opacity'
+              clearProps: 'transform,opacity,filter'
             });
           }
         });
 
-        // 4. About Section Reveals
+        // 4. About Section Reveals (Blurry Materialize)
         const aboutText = document.querySelector('.about-text');
         if (aboutText) {
           gsap.from(aboutText, {
@@ -2118,9 +2130,10 @@
             },
             y: 30,
             opacity: 0,
-            duration: 0.75,
+            filter: 'blur(12px)',
+            duration: 0.8,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
@@ -2135,14 +2148,15 @@
             y: 35,
             scale: 0.94,
             opacity: 0,
-            duration: 0.7,
+            filter: 'blur(14px)',
+            duration: 0.8,
             stagger: 0.12,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 5. Technical Skills Grid Staggered Reveal
+        // 5. Technical Skills Grid Staggered Reveal (Blurry Materialize)
         const skillCards = document.querySelectorAll('.skills-grid .skill-card');
         if (skillCards.length) {
           gsap.from(skillCards, {
@@ -2154,14 +2168,15 @@
             y: 36,
             scale: 0.95,
             opacity: 0,
-            duration: 0.65,
+            filter: 'blur(14px)',
+            duration: 0.75,
             stagger: 0.08,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 6. Featured Projects Reveal
+        // 6. Featured Projects Reveal (Blurry Materialize)
         const projectCards = document.querySelectorAll('.projects-grid .project-card');
         if (projectCards.length) {
           gsap.from(projectCards, {
@@ -2173,14 +2188,15 @@
             y: 38,
             scale: 0.94,
             opacity: 0,
-            duration: 0.7,
+            filter: 'blur(16px)',
+            duration: 0.8,
             stagger: 0.12,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 7. Academic Foundations Cards Reveal
+        // 7. Academic Foundations Cards Reveal (Blurry Materialize)
         const academicCards = document.querySelectorAll('.academics-grid .academic-card');
         if (academicCards.length) {
           gsap.from(academicCards, {
@@ -2192,14 +2208,15 @@
             y: 32,
             scale: 0.95,
             opacity: 0,
-            duration: 0.65,
+            filter: 'blur(14px)',
+            duration: 0.75,
             stagger: 0.08,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 8. Timeline Line Draw & Node Activation
+        // 8. Timeline Line Draw & Node Activation (Blurry Materialize)
         const timelineFill = document.getElementById('timelineFill');
         if (timelineFill) {
           const isMobileTimeline = window.matchMedia('(max-width: 680px)').matches;
@@ -2224,14 +2241,15 @@
             },
             y: 32,
             opacity: 0,
-            duration: 0.7,
+            filter: 'blur(14px)',
+            duration: 0.8,
             delay: i * 0.1,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         });
 
-        // 9. Languages Chips & Declaration Reveal
+        // 9. Languages Chips & Declaration Reveal (Blurry Materialize)
         const langChips = document.querySelectorAll('.lang-chip');
         if (langChips.length) {
           gsap.from(langChips, {
@@ -2242,10 +2260,11 @@
             },
             scale: 0.82,
             opacity: 0,
-            duration: 0.5,
+            filter: 'blur(8px)',
+            duration: 0.55,
             stagger: 0.08,
             ease: 'back.out(1.5)',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
@@ -2259,13 +2278,14 @@
             },
             y: 20,
             opacity: 0,
-            duration: 0.7,
+            filter: 'blur(10px)',
+            duration: 0.75,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 10. Interactive Developer Terminal Reveal
+        // 10. Interactive Developer Terminal Reveal (Blurry Materialize)
         const terminalWrap = document.querySelector('.terminal-wrap');
         if (terminalWrap) {
           gsap.from(terminalWrap, {
@@ -2276,13 +2296,14 @@
             },
             y: 35,
             opacity: 0,
-            duration: 0.75,
+            filter: 'blur(16px)',
+            duration: 0.85,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
-        // 11. Contact Rows Staggered Reveal
+        // 11. Contact Rows Staggered Reveal (Blurry Materialize)
         const contactRows = document.querySelectorAll('.contact-row');
         if (contactRows.length) {
           gsap.from(contactRows, {
@@ -2293,10 +2314,11 @@
             },
             x: -28,
             opacity: 0,
-            duration: 0.65,
+            filter: 'blur(14px)',
+            duration: 0.75,
             stagger: 0.1,
             ease: 'power3.out',
-            clearProps: 'transform,opacity'
+            clearProps: 'transform,opacity,filter'
           });
         }
 
