@@ -283,6 +283,62 @@
       color: #ffffff;
     }
 
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      border-radius: 9999px;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+    }
+
+    .nav-wrapper nav.scrolled {
+      background: rgba(10, 10, 15, 0.92);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Floating Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(15, 15, 22, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px) scale(0.85);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .scroll-to-top:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(26, 26, 38, 0.95);
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 14px rgba(56, 189, 248, 0.35);
+    }
+
     /* Main Layout Container — Full Viewport Spread */
     .container {
       width: 100%;
@@ -1303,6 +1359,11 @@
 
   <div class="toast" id="toast">Copied to clipboard</div>
 
+  <!-- Floating Scroll To Top Button -->
+  <button type="button" class="scroll-to-top magnetic" id="scrollToTop" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
   <!-- GSAP & ScrollTrigger + React Bits DotField -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1310,14 +1371,61 @@
 
   <script>
     (function () {
-      // 1. Scroll Progress Bar
+      // 1. Scroll Progress Bar & Scroll-Driven Header / Back to Top
       const scrollProgress = document.getElementById('scrollProgress');
-      window.addEventListener('scroll', () => {
+      const navEl = document.querySelector('.nav-wrapper nav');
+      const topBtn = document.getElementById('scrollToTop');
+      const sections = document.querySelectorAll('section[id], header[id], main[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      function handleScroll() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        scrollProgress.style.width = pct + '%';
-      }, { passive: true });
+        if (scrollProgress) scrollProgress.style.width = pct + '%';
+
+        // Elevated Glass Navbar styling
+        if (navEl) {
+          if (scrollTop > 45) {
+            navEl.classList.add('scrolled');
+          } else {
+            navEl.classList.remove('scrolled');
+          }
+        }
+
+        // Back-to-top button visibility
+        if (topBtn) {
+          if (scrollTop > 380) {
+            topBtn.classList.add('show');
+          } else {
+            topBtn.classList.remove('show');
+          }
+        }
+
+        // ScrollSpy: highlight active nav item
+        let currentSection = '';
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 140;
+          if (scrollTop >= top) {
+            currentSection = sec.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSection) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      if (topBtn) {
+        topBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       // 2. Spotlight Mouse Glow on Cards
       document.querySelectorAll('.spotlight-card').forEach(card => {
@@ -1445,27 +1553,135 @@
           clearProps: 'transform,opacity'
         }, '-=0.45');
 
-        // Scroll reveals for sections and cards
-        document.querySelectorAll('.reveal-section').forEach(section => {
-          const items = section.querySelectorAll('.reveal-item');
-          if (items.length) {
-            gsap.from(items, {
+        // 1. Hero Depth Parallax on Scroll
+        gsap.to('.hero-main', {
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.8
+          },
+          yPercent: -14,
+          opacity: 0.2,
+          ease: 'none'
+        });
+
+        gsap.to('.hero-aside', {
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.8
+          },
+          yPercent: -8,
+          opacity: 0.3,
+          ease: 'none'
+        });
+
+        // 2. Kinetic Marquee Scroll Scrubbing
+        const marqueeTrack = document.querySelector('.marquee-track');
+        if (marqueeTrack) {
+          gsap.to(marqueeTrack, {
+            xPercent: -10,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.marquee-wrap',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.5
+            }
+          });
+        }
+
+        // 3. Section Headers Reveal on Scroll
+        document.querySelectorAll('.section-head').forEach(head => {
+          const title = head.querySelector('.section-title');
+          const idx = head.querySelector('.section-index');
+          if (title) {
+            gsap.from(title, {
               scrollTrigger: {
-                trigger: section,
-                start: 'top 84%',
+                trigger: head,
+                start: 'top 88%',
                 once: true
               },
               y: 28,
               opacity: 0,
+              duration: 0.7,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity'
+            });
+          }
+          if (idx) {
+            gsap.from(idx, {
+              scrollTrigger: {
+                trigger: head,
+                start: 'top 88%',
+                once: true
+              },
+              x: 20,
+              opacity: 0,
               duration: 0.65,
-              stagger: 0.08,
               ease: 'power3.out',
               clearProps: 'transform,opacity'
             });
           }
         });
 
-        // Timeline line draw (horizontal on desktop, vertical on mobile)
+        // 4. About Section Reveals
+        const aboutText = document.querySelector('.about-text');
+        if (aboutText) {
+          gsap.from(aboutText, {
+            scrollTrigger: {
+              trigger: aboutText,
+              start: 'top 86%',
+              once: true
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.75,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        const strengthCards = document.querySelectorAll('.strength-card');
+        if (strengthCards.length) {
+          gsap.from(strengthCards, {
+            scrollTrigger: {
+              trigger: '.strengths-grid',
+              start: 'top 86%',
+              once: true
+            },
+            y: 35,
+            scale: 0.94,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 5. Technical Skills Grid Staggered Reveal
+        const skillCards = document.querySelectorAll('.skills-grid .skill-card');
+        if (skillCards.length) {
+          gsap.from(skillCards, {
+            scrollTrigger: {
+              trigger: '.skills-grid',
+              start: 'top 85%',
+              once: true
+            },
+            y: 36,
+            scale: 0.95,
+            opacity: 0,
+            duration: 0.65,
+            stagger: 0.08,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 6. Timeline Line Draw & Node Activation
         const timelineFill = document.getElementById('timelineFill');
         if (timelineFill) {
           const isMobileTimeline = window.matchMedia('(max-width: 680px)').matches;
@@ -1474,19 +1690,87 @@
             ease: 'none',
             scrollTrigger: {
               trigger: '#timelineContainer',
-              start: 'top 80%',
-              end: 'bottom 65%',
+              start: 'top 78%',
+              end: 'bottom 60%',
               scrub: 0.5
             }
           });
         }
 
-        // Subtle background portrait parallax on scroll
+        document.querySelectorAll('.timeline-node').forEach((node, i) => {
+          gsap.from(node, {
+            scrollTrigger: {
+              trigger: node,
+              start: 'top 85%',
+              once: true
+            },
+            y: 32,
+            opacity: 0,
+            duration: 0.7,
+            delay: i * 0.1,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        });
+
+        // 7. Languages Chips & Declaration Reveal
+        const langChips = document.querySelectorAll('.lang-chip');
+        if (langChips.length) {
+          gsap.from(langChips, {
+            scrollTrigger: {
+              trigger: '.lang-list',
+              start: 'top 88%',
+              once: true
+            },
+            scale: 0.82,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'back.out(1.5)',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        const declaration = document.querySelector('.declaration');
+        if (declaration) {
+          gsap.from(declaration, {
+            scrollTrigger: {
+              trigger: declaration,
+              start: 'top 90%',
+              once: true
+            },
+            y: 20,
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 8. Contact Rows Staggered Reveal
+        const contactRows = document.querySelectorAll('.contact-row');
+        if (contactRows.length) {
+          gsap.from(contactRows, {
+            scrollTrigger: {
+              trigger: '#contact',
+              start: 'top 86%',
+              once: true
+            },
+            x: -28,
+            opacity: 0,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          });
+        }
+
+        // 9. Subtle Background Portrait Parallax on Scroll
         const bgPortrait = document.getElementById('bgPortrait');
         if (bgPortrait) {
           gsap.to(bgPortrait, {
-            yPercent: -6,
-            scale: 1.09,
+            yPercent: -7,
+            scale: 1.08,
             ease: 'none',
             scrollTrigger: {
               trigger: document.body,
@@ -1496,6 +1780,9 @@
             }
           });
         }
+
+        // Refresh triggers once preloader is done
+        ScrollTrigger.refresh();
       } else {
         // Fallback if GSAP CDN is unavailable
         if (preloader) preloader.style.display = 'none';
